@@ -1,7 +1,4 @@
 .letter{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
     border: 1px solid black;
     background-color: rgb(23, 212, 80);
     width: 15%;
@@ -12,4 +9,13 @@
 
 .hidden{
     background-color: rgb(172, 179, 174);
+}
+
+.symbol, .symbol p{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0;
+    height: 100%;
+    width: 100%;
 }

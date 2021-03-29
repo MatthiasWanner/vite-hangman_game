@@ -6,8 +6,8 @@ const HIDDEN_SYMBOL = "_"
 
 const LetterToGuess = ({ letter, feedback, index }) => (
     <div className={`letter ${feedback}`}>
-      <span className="symbol">
-        {feedback === 'hidden' ? HIDDEN_SYMBOL : letter}
+      <span className="symbol" key={index}>
+        <p>{feedback === 'hidden' ? HIDDEN_SYMBOL : letter}</p>
       </span>
     </div>
   )
