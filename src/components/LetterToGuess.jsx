@@ -4,17 +4,17 @@ import '../css/LetterToGuess.css'
 
 const HIDDEN_SYMBOL = "_"
 
-const LetterToGuess = ({ letter, feedback, index }) => (
-    <div className={`letter ${feedback}`}>
+const LetterToGuess = ({ letter, status, index }) => (
+    <div className={`letter ${status}`}>
       <span className="symbol" key={index}>
-        <p>{feedback === 'hidden' ? HIDDEN_SYMBOL : letter}</p>
+        <p>{status === 'hidden' ? HIDDEN_SYMBOL : letter}</p>
       </span>
     </div>
   )
   
   LetterToGuess.propTypes = {
     letter: PropTypes.string.isRequired,
-    feedback: PropTypes.oneOf([
+    status: PropTypes.oneOf([
       'hidden',
       'visible',
     ]).isRequired,
