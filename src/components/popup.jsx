@@ -3,25 +3,23 @@ import React from 'react'
 import '../css/Popup.css'
 
 
-const Popup = ({ player, status, score }) => {
+const Popup = ({ player, score, onClick }) => {
 
     return(
         <div className={`popup ${status}`}>
         <span className="win-message">
             <p>{`Congratulations ${player}, you win !!`}</p>
             <p>Your score : <span className='score'>{`${score}`}</span></p>
+            <button className='reload-btn' onClick={() => onClick()}>New Game</button>
         </span>
         </div>
 
     )
 }
 
-KeybordKey.propTypes = {
+Popup.propTypes = {
     player: PropTypes.string.isRequired,
-    status: PropTypes.oneOf([
-      'won',
-      'notYetWon',
-    ]).isRequired,
+    score: PropTypes.number.isRequired,
   }
 
 

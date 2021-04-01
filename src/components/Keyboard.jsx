@@ -1,9 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import KeyboardKey from './KeyboardKey.jsx';
+import '../css/Keyboard.css';
 
 const LATINUPPERALPHABET = "AZERTYUIOPQSDFGHJKLMWXCVBN".split('');
 
-const Keyboard = ({keysUsed, keysFound, onClick}) => {
+function Keyboard({keysUsed, keysFound, handleClick}){
     
 
     function getKeyStatus(letter){
@@ -24,12 +26,18 @@ const Keyboard = ({keysUsed, keysFound, onClick}) => {
             status={getKeyStatus(letter)}
             index={index}
             key={index}
-            onClick={() => onClick(index, letter)}
+            handleClick={() => handleClick(index, letter)}
           />
         ))
         }
       </div>
     )
 }
+
+Keyboard.propTypes = {
+    keysUsed: PropTypes.array.isRequired,
+    keysFound: PropTypes.array.isRequired,
+    handleClick: PropTypes.func.isRequired,
+  }
 
 export default Keyboard

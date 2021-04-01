@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../css/KeyboardKey.css'
 
-const KeyboardKey = ({ letter, status, index, onClick }) => {
+const KeyboardKey = ({ letter, status, index, handleClick }) => {
 
   return (
-    <button id={letter} className={`keyboard-key ${status}`} onClick={() => onClick(index, letter)}>
+    <button id={letter} className={`keyboard-key ${status}`} onClick={() => handleClick(index, letter)}>
       <span key={index}>
           <p>{letter}</p>
       </span>
@@ -23,7 +23,7 @@ const KeyboardKey = ({ letter, status, index, onClick }) => {
     ]).isRequired,
     clicked: PropTypes.bool,
     index: PropTypes.number.isRequired,
-    onClick: PropTypes.func.isRequired,
+    handleClick: PropTypes.func.isRequired,
   }
 
   export default KeyboardKey

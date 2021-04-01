@@ -1,24 +1,18 @@
 import React, { useState } from 'react'
 import './App.css';
 import strRandom from './components/functions.jsx'
-import LetterToGuess from './components/LetterToGuess.jsx';
+import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard.jsx';
+import Popup from './components/Popup.jsx';
 
 
 function App() {
+  const [player, setPlayer] = useState('Matthias');
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
   const [word, setWord] = useState(strRandom({includeNumbers: false, length: 5}).split(''));
   const [score, setScore] = useState(26);
-  const won = isFound.length === word.length;
-
-  function getGuessLetterStatus(letter){
-    if(isFound.includes(letter)){
-      return 'visible';
-    }else{
-      return 'hidden';
-    }
-  }
+  const won = word.every(i => isFound.includes(i));
 
   const compareLetters = (index, letter) => {
     if(isUsed.includes(letter) || isFound.includes(letter)){return;}
@@ -33,26 +27,39 @@ function App() {
     }
   }
 
+  const newGame = () => {
+    setScore(26);
+    setIsFound([]);
+    setIsUsed([]);
+    setWord(strRandom({includeNumbers: false, length: 5}).split(''))
+
+  }
+
   const keyPress = (e) => {
     const letter = e.key.toUpperCase()
   }
 
   return (
     <div className="board-game">
-      <div className="word-to-guess">
-        {word.map((letter, index) => (
-          <LetterToGuess
-            letter={letter}
-            status={getGuessLetterStatus(letter)}
-            index={index}
-            key={index}
-          />
-        ))}
+      <WordToGuess 
+        word={word}
+        lettersFound={isFound}
+      />
+
+    <div className="pop-up-container">
+      {won && 
+      <Popup
+        player={player}
+        score={score}
+        onClick={newGame}
+      />
+      }
       </div>
+
       <Keyboard
         keysUsed = {isUsed}
         keysFound = {isFound}
-        onClick={compareLetters}
+        handleClick={compareLetters}
       />
       
     </div>
