@@ -1,0 +1,10 @@
+.keyboard{
+    height: 25vh;
+    padding: 10px;
+    background-color: rgb(197, 197, 197);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
