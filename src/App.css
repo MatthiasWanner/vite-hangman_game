@@ -3,11 +3,13 @@ body{
 }
 
 .board-game{
+  position: relative;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
-  max-width: 500px;
+  max-width: 900px;
   padding: 5px;
 }
 

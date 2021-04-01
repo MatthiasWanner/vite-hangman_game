@@ -1,5 +1,6 @@
 .keyboard{
-    height: 25vh;
+    height: 220px;
+    width: 100%;
     padding: 10px;
     background-color: rgb(197, 197, 197);
     border-radius: 10px;
@@ -8,3 +9,10 @@
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 5px;
   }
+
+  @media screen and (min-width: 992px){
+    .keyboard{
+      height: 345px;
+    }
+  }
+

@@ -4,15 +4,22 @@ import strRandom from './components/functions.jsx'
 import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard.jsx';
 import Popup from './components/Popup.jsx';
+import Welcome from './components/Welcome';
 
 
 function App() {
-  const [player, setPlayer] = useState('Matthias');
+  const [player, setPlayer] = useState('');
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
   const [word, setWord] = useState(strRandom({includeNumbers: false, length: 5}).split(''));
   const [score, setScore] = useState(26);
+  const [keyPressed, setKeyPressed] = useState('');
+  const haveName = player !== '';
   const won = word.every(i => isFound.includes(i));
+
+  const setPlayerName = (name) => {
+    setPlayer(name);
+  }
 
   const compareLetters = (index, letter) => {
     if(isUsed.includes(letter) || isFound.includes(letter)){return;}
@@ -40,7 +47,13 @@ function App() {
   }
 
   return (
-    <div className="board-game">
+    <div className="board-game" onKeyPress={(e) => setKeyPressed(e.key)}>
+      {!haveName &&
+        <Welcome
+          handleClick={setPlayerName}
+        />
+      }
+
       <WordToGuess 
         word={word}
         lettersFound={isFound}
@@ -51,7 +64,7 @@ function App() {
       <Popup
         player={player}
         score={score}
-        onClick={newGame}
+        handleClick={newGame}
       />
       }
       </div>
