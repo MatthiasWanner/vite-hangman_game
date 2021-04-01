@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../css/KeyboardKey.css'
 
-const KeybordKey = ({ letter, status, index, onClick }) => {
+const KeyboardKey = ({ letter, status, index, onClick }) => {
 
   return (
     <button id={letter} className={`keyboard-key ${status}`} onClick={() => onClick(index, letter)}>
@@ -14,7 +14,7 @@ const KeybordKey = ({ letter, status, index, onClick }) => {
   )
 }
   
-  KeybordKey.propTypes = {
+  KeyboardKey.propTypes = {
     letter: PropTypes.string.isRequired,
     status: PropTypes.oneOf([
       'unused',
@@ -26,4 +26,4 @@ const KeybordKey = ({ letter, status, index, onClick }) => {
     onClick: PropTypes.func.isRequired,
   }
 
-  export default KeybordKey
+  export default KeyboardKey

@@ -2,18 +2,24 @@ import React, { useState } from 'react'
 import './App.css';
 import strRandom from './components/functions.jsx'
 import LetterToGuess from './components/LetterToGuess.jsx';
-import KeybordKey from './components/KeyboardKey.jsx';
+import Keyboard from './components/Keyboard.jsx';
 
-
-const latinUpperAlphabet = "AZERTYUIOPQSDFGHJKLMWXCVBN".split('');
 
 function App() {
-
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
   const [word, setWord] = useState(strRandom({includeNumbers: false, length: 5}).split(''));
   const [score, setScore] = useState(26);
-  
+  const won = isFound.length === word.length;
+
+  function getGuessLetterStatus(letter){
+    if(isFound.includes(letter)){
+      return 'visible';
+    }else{
+      return 'hidden';
+    }
+  }
+
   const compareLetters = (index, letter) => {
     if(isUsed.includes(letter) || isFound.includes(letter)){return;}
     else if(word.includes(`${letter}`)){
@@ -27,29 +33,9 @@ function App() {
     }
   }
 
-  function getKeyStatus(letter){
-    if(isUsed.includes(letter)){
-      return 'used';
-    }else if(isFound.includes(letter)){
-      return 'found';
-    }else{
-      return 'unused';
-    }
-  }
-
-  function getGuessLetterStatus(letter){
-    if(isFound.includes(letter)){
-      return 'visible';
-    }else{
-      return 'hidden';
-    }
-  }
-
   const keyPress = (e) => {
     const letter = e.key.toUpperCase()
-    console.log(typeof letter);
   }
-  document.addEventListener('keydown', keyPress);
 
   return (
     <div className="board-game">
@@ -63,18 +49,12 @@ function App() {
           />
         ))}
       </div>
-      <div className="keyboard">
-        {latinUpperAlphabet.map((letter, index) => (
-          <KeybordKey
-            letter={letter}
-            status={getKeyStatus(letter)}
-            index={index}
-            key={index}
-            onClick={compareLetters}
-          />
-        ))
-        }
-      </div>
+      <Keyboard
+        keysUsed = {isUsed}
+        keysFound = {isFound}
+        onClick={compareLetters}
+      />
+      
     </div>
 
   )
