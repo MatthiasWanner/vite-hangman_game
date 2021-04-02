@@ -16,19 +16,19 @@ function App() {
   const [keyPressed, setKeyPressed] = useState('');
   const haveName = player !== '';
   const won = word.every(i => isFound.includes(i));
-
+  console.log(word); // To dev mode
+  
   const setPlayerName = (name) => {
     setPlayer(name);
   }
 
   const compareLetters = (index, letter) => {
     if(isUsed.includes(letter) || isFound.includes(letter)){return;}
+    // If word contain letter
     else if(word.includes(`${letter}`)){
-      console.log(`La lettre ${letter} est dans le mot`)
       setIsFound([...isFound, letter]);
       setScore(score - 1);
     }else{
-      console.log(`La lettre ${letter} n'est pas dans le mot`);
       setIsUsed([...isUsed, letter]);
       setScore(score - 1);
     }
