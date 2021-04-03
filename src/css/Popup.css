@@ -2,8 +2,8 @@
     width: 100%;
     height: 100%;
     margin: 4% 0%;
-    display: flex;
     padding: 6%;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
@@ -41,5 +41,12 @@
  .reload-btn {
      height: 100%;
  }
+.Popups {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    width: 80%;
+    padding: 2% 10%;
+}
 
 }
