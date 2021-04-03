@@ -1,7 +1,9 @@
 // Function to build a random word
 // src: https://www.equinode.com/blog/article/generer-une-chaine-de-caracteres-aleatoire-avec-javascript
 
-const strRandom = (params) => {
+const Functions = {
+
+  strRandom: (params) => {
     let a = 10,
         b = 'abcdefghijklmnopqrstuvwxyz',
         c = '',
@@ -25,7 +27,25 @@ const strRandom = (params) => {
     for (; d < a; d++) {
       c += e[Math.floor(Math.random() * e.length)];
     }
+    console.log(`Dev mode : fake word is ${c.toUpperCase()}`);
     return c.toUpperCase();
-  }
+  },
 
-  export default strRandom
+  getWord: (length) => {
+    return fetch(`http://localhost:5000/api/wordsapi/random/${length}`, {
+    method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Cache-Control': 'no-cache',
+      },
+      }).then(response => {
+      return response.send();
+      })
+      .catch(err => { 
+      console.log(err);
+      });
+    },
+}
+
+  export default Functions

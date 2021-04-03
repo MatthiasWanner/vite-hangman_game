@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import './App.css';
-import strRandom from './components/functions.jsx'
+import Functions from './components/Functions.jsx';
 import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard.jsx';
 import Popup from './components/Popup.jsx';
 import Welcome from './components/Welcome';
 
+const params = 5;
 
 function App() {
   const [player, setPlayer] = useState('');
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
-  const [word, setWord] = useState(strRandom({includeNumbers: false, length: 5}).split(''));
+  const [word, setWord] = useState(Functions.getWord(params)); //strRandom({includeNumbers: false, length: 5}).split('')
   const [score, setScore] = useState(26);
   const [keyPressed, setKeyPressed] = useState('');
   const haveName = player !== '';
   const won = word.every(i => isFound.includes(i));
-  console.log(word); // To dev mode
   
   const setPlayerName = (name) => {
     setPlayer(name);
