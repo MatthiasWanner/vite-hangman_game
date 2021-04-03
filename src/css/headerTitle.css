@@ -1,0 +1,49 @@
+.header {
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTitle {
+    margin: 0;
+    width: 95%;
+    color: white;
+    font-family: 'Poppins', sans-serif;;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.headerTitle h1 {
+    font-size: 40px;
+}
+
+.headerTitle h2 {
+    font-size: 18px;
+}
+
+.headerTitle h3 {
+    margin-top: 1%;
+    font-size: 10px;
+    font-weight: 200;
+}
+
+@media screen and (min-width: 992px){
+    .header {
+        margin-top: 10%;
+    }
+    
+    .headerTitle{
+        width: 100%;
+    }
+
+    .headerTitle h1 {
+        font-size: 50px;
+    }
+    .headerTitle h2 {
+        font-size: 20px;
+    }
+    .headerTitle h3 {
+        font-size: 12px;
+    }
+}

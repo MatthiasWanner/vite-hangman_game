@@ -7,18 +7,13 @@ const Welcome = ({handleClick}) => {
     const [name, setName] = useState('');
 
     return(
+    <div className="Welcom">  
         <div className="welcome-page">
-
-            <div className={`welcome-message`}>
-                <span className="win-message">
-                    <p><span className="welcome-text">Welcome to my Hangman Game</span></p>
-                    <p><span>Please enter your name</span></p>
-                    <input id="name" className="name-input" onChange={e => setName(e.target.value)}></input>
-                    <button className='submit-btn' onClick={() => handleClick(name)}>Play</button>
-                </span>
-            </div>
-
+            <p><span>Please enter your name</span></p>
+            <input id="name" className="name-input" onChange={e => setName(e.target.value)}></input>
+            <button className='submit-btn' onClick={() => handleClick(name)}>Play</button>
         </div>
+    </div> 
 
     )
 }

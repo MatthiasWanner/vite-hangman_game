@@ -1,17 +1,22 @@
 .keyboard{
-    height: 220px;
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(197, 197, 197);
+  margin-top: 1%;
+    height: 250px;
+    width: 90%;
+    padding: 20px;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 5px;
+    background: linear-gradient(278.58deg, #1A1A27 -5.7%, rgba(196, 196, 196, 0) 232.41%);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.25),
+                -10px -10px 15px rgba(255, 255, 255, 0.048);
+    border-radius: 23px;  
   }
 
   @media screen and (min-width: 992px){
     .keyboard{
+        width: 80%;
       height: 345px;
     }
   }
