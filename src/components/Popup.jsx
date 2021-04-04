@@ -12,8 +12,8 @@ const Popup = ({ player, score, level, handleClick }) => {
         <span className="win-message">
             <p>{`Congratulations ${player}, you win !!`}</p>
             <p>Your score : <span className='score'>{`${score}`}</span></p>
-            <input id="player" placeholder={`${newPlayer}`} onChange={e => setName(e.target.value)}></input>
-            <input id="level"  placeholder={`${newLevel}`}onChange={e => setLevel(e.target.value)}></input>
+            <input className="player-input" placeholder={`${newPlayer}`} onChange={e => setName(e.target.value)}></input>
+            <input className="level-input"  placeholder={`${newLevel}`}onChange={e => setLevel(e.target.value)}></input>
             <button className='reload-btn' onClick={() => handleClick(newPlayer, newLevel)}>New Game</button>
         </span>
         </div>

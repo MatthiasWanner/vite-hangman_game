@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
-import Functions from './components/Functions.jsx';
 import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard.jsx';
 import Popup from './components/Popup.jsx';
@@ -11,7 +10,7 @@ function App() {
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
   const [level, setLevel] = useState(0);
-  const [word, setWord] = useState(['']); //Functions.strRandom({includeNumbers: false, length: 5}).split('')
+  const [word, setWord] = useState('HANGMAN'.split(''));
   const [score, setScore] = useState(26);
   // const [keyPressed, setKeyPressed] = useState('');
   const haveName = player !== '';
@@ -93,11 +92,13 @@ function App() {
       }
       </div>
 
-      <Keyboard
-        keysUsed = {isUsed}
-        keysFound = {isFound}
-        handleClick={compareLetters}
-      />
+      {haveName &&
+        <Keyboard
+          keysUsed = {isUsed}
+          keysFound = {isFound}
+          handleClick={compareLetters}
+        />
+      }
       
     </div>
 

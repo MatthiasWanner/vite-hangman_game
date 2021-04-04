@@ -14,9 +14,9 @@ const Welcome = ({handleClick}) => {
                 <span className="win-message">
                     <p><span className="welcome-text">Welcome to my Hangman Game</span></p>
                     <p><span>Please enter your name</span></p>
-                    <input id="player" className="name-input" onChange={e => setName(e.target.value)}></input>
+                    <input className="player-input" className="name-input" onChange={e => setName(e.target.value)}></input>
                     <p><span>Please enter number of letters you want to guess</span></p>
-                    <input id="level" className="level-input" onChange={e => setLevel(+e.target.value)}></input>
+                    <input className="level" className="level-input" onChange={e => setLevel(+e.target.value)}></input>
                     <button className='submit-btn' onClick={() => handleClick(name, level)}>Play</button>
                 </span>
             </div>
