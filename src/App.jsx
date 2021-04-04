@@ -68,13 +68,9 @@ function App() {
 
   }
 
-  const keyPress = (e) => { //onKeyPress={(e) => setKeyPressed(e.key)}
-    const letter = e.key.toUpperCase()
-  }
-
   return (
 
-    <div className="board-game" onKeyPress={(e) => setKeyPressed(e.key)}>
+    <div className="board-game">
       <div className="Header">
       <HeaderTitle />
         {!haveName &&
