@@ -4,6 +4,8 @@ import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard.jsx';
 import Popup from './components/Popup.jsx';
 import Welcome from './components/Welcome';
+import HeaderTitle from './components/HeaderTitle';
+import ScrollTo from './components/ScrollTo'
 
 function App() {
   const [player, setPlayer] = useState('');
@@ -71,20 +73,28 @@ function App() {
   }
 
   return (
-    <div className="board-game" > 
-      {!haveName &&
-        <Welcome
-          handleClick={setPlayerName}
-        />
-      }
+
+    <div className="board-game" onKeyPress={(e) => setKeyPressed(e.key)}>
+      <div className="Header">
+      <HeaderTitle />
+        {!haveName &&
+          <Welcome
+            handleClick={setPlayerName}
+          />
+        }
+      <ScrollTo />
+      </div>
+
+    
+
+      
 
       <WordToGuess 
         isStart = {isStartOfParty}
         word={word}
         lettersFound={isFound}
       />
-
-    <div className="pop-up-container">
+      <div className="pop-up-container">
       {won && 
       <Popup
         player={player}

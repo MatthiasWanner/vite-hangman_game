@@ -8,8 +8,8 @@ const Welcome = ({handleClick}) => {
     const [level, setLevel] = useState(0);
 
     return(
+    <div className="Welcom">  
         <div className="welcome-page">
-
             <div className={`welcome-message`}>
                 <span className="win-message">
                     <p><span className="welcome-text">Welcome to my Hangman Game</span></p>
@@ -20,8 +20,8 @@ const Welcome = ({handleClick}) => {
                     <button className='submit-btn' onClick={() => handleClick(name, level)}>Play</button>
                 </span>
             </div>
-
         </div>
+    </div> 
 
     )
 }
