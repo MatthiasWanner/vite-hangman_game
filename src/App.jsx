@@ -12,6 +12,7 @@ function App() {
   const [level, setLevel] = useState(0);
   const [word, setWord] = useState('HANGMAN'.split(''));
   const [score, setScore] = useState(26);
+  const [isStartOfParty, setIsStartOfParty] = useState(true);
   // const [keyPressed, setKeyPressed] = useState('');
   const haveName = player !== '';
   const won = word.every(i => isFound.includes(i));
@@ -40,6 +41,7 @@ function App() {
     setPlayer(name);
     setLevel(level);
     getWord(level);
+    setIsStartOfParty(false);
   }
 
   const compareLetters = (index, letter) => {
@@ -77,6 +79,7 @@ function App() {
       }
 
       <WordToGuess 
+        isStart = {isStartOfParty}
         word={word}
         lettersFound={isFound}
       />

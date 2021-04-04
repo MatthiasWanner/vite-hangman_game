@@ -4,7 +4,7 @@ import LetterToGuess from './LetterToGuess'
 import '../css/WordToGuess.css'
 
 
-const WordToGuess = ( {word, lettersFound} ) => {
+const WordToGuess = ( {isStart, word, lettersFound} ) => {
 
     function getGuessLetterStatus(letter){
         if(lettersFound.includes(letter)){
@@ -19,7 +19,7 @@ const WordToGuess = ( {word, lettersFound} ) => {
         {word.map((letter, index) => (
           <LetterToGuess
             letter={letter}
-            status={getGuessLetterStatus(letter)}
+            status={isStart ? 'visible' : getGuessLetterStatus(letter)}
             index={index}
             key={index}
           />
