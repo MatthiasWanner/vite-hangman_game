@@ -1,3 +1,5 @@
+import React, {useState} from 'react';
+
 // Function to build a random word
 // src: https://www.equinode.com/blog/article/generer-une-chaine-de-caracteres-aleatoire-avec-javascript
 
@@ -30,22 +32,6 @@ const Functions = {
     console.log(`Dev mode : fake word is ${c.toUpperCase()}`);
     return c.toUpperCase();
   },
-
-  getWord: (length) => {
-    return fetch(`http://localhost:5000/api/wordsapi/random/${length}`, {
-    method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Cache-Control': 'no-cache',
-      },
-      }).then(response => {
-      return response.send();
-      })
-      .catch(err => { 
-      console.log(err);
-      });
-    },
 }
 
   export default Functions

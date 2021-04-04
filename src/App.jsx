@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import Functions from './components/Functions.jsx';
 import WordToGuess from './components/WordToGuess';
@@ -6,20 +6,41 @@ import Keyboard from './components/Keyboard.jsx';
 import Popup from './components/Popup.jsx';
 import Welcome from './components/Welcome';
 
-const params = 5;
-
 function App() {
   const [player, setPlayer] = useState('');
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
-  const [word, setWord] = useState(Functions.getWord(params)); //strRandom({includeNumbers: false, length: 5}).split('')
+  const [level, setLevel] = useState(0);
+  const [word, setWord] = useState(['']); //Functions.strRandom({includeNumbers: false, length: 5}).split('')
   const [score, setScore] = useState(26);
-  const [keyPressed, setKeyPressed] = useState('');
+  // const [keyPressed, setKeyPressed] = useState('');
   const haveName = player !== '';
   const won = word.every(i => isFound.includes(i));
+
+  const getWord = (length) => {
+    fetch(`http://localhost:5000/api/wordsapi/random/${length}`,{
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Cache-Control': 'no-cache',
+      },
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setWord(data.split(''));
+      })
+      .catch(err => { 
+      console.log(err);
+      });
+  }
   
-  const setPlayerName = (name) => {
+  const setPlayerName = (name, level) => {
     setPlayer(name);
+    setLevel(level);
+    getWord(level);
   }
 
   const compareLetters = (index, letter) => {
@@ -34,20 +55,22 @@ function App() {
     }
   }
 
-  const newGame = () => {
+  const newGame = (player, level) => {
     setScore(26);
     setIsFound([]);
     setIsUsed([]);
-    setWord(strRandom({includeNumbers: false, length: 5}).split(''))
+    setPlayer(player);
+    setLevel(level);
+    getWord(level);
 
   }
 
-  const keyPress = (e) => {
+  const keyPress = (e) => { //onKeyPress={(e) => setKeyPressed(e.key)}
     const letter = e.key.toUpperCase()
   }
 
   return (
-    <div className="board-game" onKeyPress={(e) => setKeyPressed(e.key)}>
+    <div className="board-game" > 
       {!haveName &&
         <Welcome
           handleClick={setPlayerName}
@@ -64,6 +87,7 @@ function App() {
       <Popup
         player={player}
         score={score}
+        level={level}
         handleClick={newGame}
       />
       }
