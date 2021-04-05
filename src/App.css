@@ -10,17 +10,44 @@ body{
   height: 100%;
 }
 
-.pop-up-container {
-  width: 80%;
-}
-
-.board-game{
-  position: relative;
+.main-container{
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20%;
 }
 
+.header{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.dashboard{
+  height: 50%;
+}
+
+.board-game{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  padding: 5% 0% 10% 0%;
+}
+
+@media screen and (min-width: 992px){
+  .dashboard{
+    height: 60%;
+  }
+
+  .board-game{
+    min-height: 100vh;
+    padding: 0;
+    align-items: center;
+  }
+}

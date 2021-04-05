@@ -1,7 +1,7 @@
 .keyboard{
   margin-top: 1%;
     height: 250px;
-    width: 90%;
+    width: 100%;
     padding: 20px;
     border-radius: 10px;
     display: grid;
@@ -16,8 +16,9 @@
 
   @media screen and (min-width: 992px){
     .keyboard{
-        width: 80%;
-      height: 345px;
+      width: 80%;
+      height: 300px;
+      margin-bottom: 2%;
     }
   }
 

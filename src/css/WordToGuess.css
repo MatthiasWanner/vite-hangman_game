@@ -1,12 +1,11 @@
 .word-to-guess{
-    margin-top: 20%;
     margin-bottom: 1%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    width: 90%;
+    width: 100%;
     max-width: 700px;
-    height: 150px;
+    height: 110px;
     border: none;
     box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.07),
     5px 5px 15px rgba(0, 0, 0, 0.521);
@@ -16,8 +15,10 @@
 
 @media screen and (min-width: 992px) {
     .word-to-guess {
-     margin-top: 10%;
-
+        margin-top: 2%;
+        height: 100px;
+        width: 90%;
+        justify-content: center;
     }
     
 }

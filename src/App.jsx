@@ -4,14 +4,14 @@ import WordToGuess from './components/WordToGuess';
 import Keyboard from './components/Keyboard.jsx';
 import Popup from './components/Popup.jsx';
 import Welcome from './components/Welcome';
-import HeaderTitle from './components/HeaderTitle';
+import Title from './components/Title';
 import ScrollTo from './components/ScrollTo'
 
 function App() {
   const [player, setPlayer] = useState('');
   const [isUsed, setIsUsed] = useState([]);
   const [isFound, setIsFound] = useState([]);
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState('5');
   const [word, setWord] = useState('HANGMAN'.split(''));
   const [score, setScore] = useState(26);
   const [isStartOfParty, setIsStartOfParty] = useState(true);
@@ -40,9 +40,11 @@ function App() {
   }
   
   const setPlayerName = (name, level) => {
-    setPlayer(name);
-    setLevel(level);
-    getWord(level);
+    const newName = name !== '' ? name : 'Anonymous player' ;
+    const newLevel = level !== '' ? level : (Math.floor(Math.random() * 6) + 5).toString();
+    setPlayer(newName);
+    setLevel(newLevel);
+    getWord(newLevel);
     setIsStartOfParty(false);
   }
 
@@ -70,46 +72,52 @@ function App() {
 
   return (
 
-    <div className="board-game">
-      <div className="Header">
-      <HeaderTitle />
-        {!haveName &&
-          <Welcome
-            handleClick={setPlayerName}
+    <div className="main-container">
+      <div className="header">
+
+        <Title />
+
+        <div className="dashboard">
+          {!haveName &&
+            <Welcome
+              handleClick={setPlayerName}
+            />
+          }
+        
+        </div>
+
+        <ScrollTo />
+
+      </div>
+      
+      <div className="board-game">
+        <WordToGuess 
+          isStart = {isStartOfParty}
+          word={word}
+          lettersFound={isFound}
+        />
+
+  
+        {won && 
+          <Popup
+          player={player}
+          score={score}
+          level={level}
+          handleClick={newGame}
           />
         }
-      <ScrollTo />
-      </div>
 
-    
-
+        {haveName &&
+          <Keyboard
+            keysUsed = {isUsed}
+            keysFound = {isFound}
+            handleClick={compareLetters}
+          />
+        }
       
-
-      <WordToGuess 
-        isStart = {isStartOfParty}
-        word={word}
-        lettersFound={isFound}
-      />
-      <div className="pop-up-container">
-      {won && 
-      <Popup
-        player={player}
-        score={score}
-        level={level}
-        handleClick={newGame}
-      />
-      }
       </div>
-
-      {haveName &&
-        <Keyboard
-          keysUsed = {isUsed}
-          keysFound = {isFound}
-          handleClick={compareLetters}
-        />
-      }
-      
     </div>
+      
 
   )
 

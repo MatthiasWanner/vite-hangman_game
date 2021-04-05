@@ -1,11 +1,11 @@
 import React from 'react'
-import '../css/headerTitle.css'
+import '../css/Title.css'
 
-function HeaderTitle() {
+function Title() {
     return (
-    <div className="header"> 
+    <div className="title-container"> 
         
-        <div className="headerTitle">
+        <div className="title">
             <h1>WELCOM ON MY HANGMAN GAME</h1>
             <h2>Lets try to find some fun Words </h2>
             <h3>Be careful you only have few trys to make it !</h3>
@@ -15,4 +15,4 @@ function HeaderTitle() {
     )
 }
 
-export default HeaderTitle
+export default Title
