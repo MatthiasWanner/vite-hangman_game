@@ -20,7 +20,7 @@ function App() {
   const won = word.every(i => isFound.includes(i));
 
   const getWord = (length) => {
-    fetch(`http://localhost:5000/api/wordsapi/random/${length}`,{
+    fetch(`https://guarded-wildwood-27053.herokuapp.com/api/wordsapi/random/${length}`,{
       method: 'GET',
       credentials: 'same-origin',
       headers: {
